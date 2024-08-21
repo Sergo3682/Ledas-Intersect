@@ -1,5 +1,5 @@
 output: main.o vector3d.o
-	g++ main.o vector3d.o -o app
+	g++ main.o vector3d.o -Wall -o app
 
 main.o: Sources/main.cpp
 	g++ -c Sources/main.cpp
