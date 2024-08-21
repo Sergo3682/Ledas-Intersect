@@ -1,3 +1,6 @@
+#ifndef VECTOR3D_H
+#define VECTOR3D_H
+
 class Vector3D
 {
 public:
@@ -8,3 +11,4 @@ public:
     double Y;
     double Z;
 };
+#endif // VECTOR3D_H

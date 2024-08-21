@@ -1,3 +1,6 @@
+#ifndef SEGMENT3D_H
+#define SEGMENT3D_H
+
 #include "../Headers/vector3d.h"
 
 class Segment3D
@@ -10,3 +13,4 @@ private:
     Vector3D end;
     Vector3D segmentVect;
 };
+#endif // SEGMENT3D_H
