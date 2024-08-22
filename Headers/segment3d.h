@@ -7,10 +7,11 @@ class Segment3D
 {
 public:
     Segment3D(Vector3D start, Vector3D end);
-    ~Segment3D();
 private:
     Vector3D start;
     Vector3D end;
-    Vector3D segmentVect;
+    Vector3D SegmentVect;
+
+    void setSegmentVect();
 };
 #endif // SEGMENT3D_H

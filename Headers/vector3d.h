@@ -4,9 +4,12 @@
 class Vector3D
 {
 public:
+    Vector3D();
     Vector3D(double X, double Y, double Z);
-    ~Vector3D();
-//private:
+    double getX();
+    double getY();
+    double getZ();
+private:
     double X;
     double Y;
     double Z;

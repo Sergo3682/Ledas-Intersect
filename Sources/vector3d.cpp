@@ -1,5 +1,12 @@
 #include "../Headers/vector3d.h"
 
+Vector3D::Vector3D()
+{
+    this->X = 0;
+    this->Y = 0;
+    this->Z = 0;
+}
+
 Vector3D::Vector3D(double X, double Y, double Z)
 {
     this->X = X;
@@ -7,7 +14,17 @@ Vector3D::Vector3D(double X, double Y, double Z)
     this->Z = Z;
 }
 
-Vector3D::~Vector3D()
+double Vector3D::getX()
 {
-    
+    return this->X;
+}
+
+double Vector3D::getY()
+{
+    return this->Y;
+}
+
+double Vector3D::getZ()
+{
+    return this->Z;
 }

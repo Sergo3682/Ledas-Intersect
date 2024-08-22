@@ -1,10 +1,11 @@
 #include "../Headers/vector3d.h"
-#include <stdio.h>
+#include "../Headers/segment3d.h"
 
 int main()
 {
-    Vector3D testVec(12131, 4, -0.24);
-    printf("X = %f, Y = %f, Z=%f\n", testVec.X, testVec.Y, testVec.Z);
+    Vector3D a(1, 1, 0);
+    Vector3D b(4, 8, 3);
+    Segment3D segm(a, b);
 
     return 0;
 }
