@@ -9,6 +9,7 @@ public:
     double getX();
     double getY();
     double getZ();
+    void setCoords(double X, double Y, double Z);
 private:
     double X;
     double Y;

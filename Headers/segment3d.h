@@ -6,6 +6,7 @@
 class Segment3D
 {
 public:
+    Segment3D();
     Segment3D(Vector3D start, Vector3D end);
 private:
     Vector3D start;

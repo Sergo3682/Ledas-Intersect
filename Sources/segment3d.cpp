@@ -1,5 +1,12 @@
 #include "../Headers/segment3d.h"
 
+Segment3D::Segment3D()
+{
+    this->start = Vector3D();
+    this->end = Vector3D();
+    setSegmentVect();
+}
+
 Segment3D::Segment3D(Vector3D start, Vector3D end)
 {
     this->start = start;
