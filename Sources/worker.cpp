@@ -39,3 +39,8 @@ double Worker::ThirdOrderDet(Vector3D s1s2Vect, Vector3D DirectVect1, Vector3D D
           (s1s2Vect.getZ() * (DirectVect1.getX() * DirectVect2.getY() - DirectVect1.getY() * DirectVect2.getX()));
     return res;
 }
+
+bool Worker::isIntersect()
+{
+    return isNotParallel() && isCoplanar();
+}

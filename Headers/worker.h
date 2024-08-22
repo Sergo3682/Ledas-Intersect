@@ -9,7 +9,7 @@ class Worker
 public:
     Worker(Segment3D Segm1, Segment3D Segm2);
     bool isIntersect();
-//private:
+private:
     Segment3D Segm1;
     Segment3D Segm2;
     Vector3D DirectVect1;
