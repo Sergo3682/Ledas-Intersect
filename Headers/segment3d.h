@@ -8,11 +8,12 @@ class Segment3D
 public:
     Segment3D();
     Segment3D(Vector3D start, Vector3D end);
+    Vector3D getDirectVect();
 private:
     Vector3D start;
     Vector3D end;
-    Vector3D SegmentVect;
+    Vector3D DirectVect;
 
-    void setSegmentVect();
+    void setDirectVect();
 };
 #endif // SEGMENT3D_H
