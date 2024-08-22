@@ -27,3 +27,8 @@ Vector3D Segment3D::getDirectVect()
 {
     return DirectVect;
 }
+
+Vector3D Segment3D::getStartVect()
+{
+    return start;
+}

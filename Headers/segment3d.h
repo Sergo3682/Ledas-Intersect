@@ -9,6 +9,7 @@ public:
     Segment3D();
     Segment3D(Vector3D start, Vector3D end);
     Vector3D getDirectVect();
+    Vector3D getStartVect();
 private:
     Vector3D start;
     Vector3D end;
