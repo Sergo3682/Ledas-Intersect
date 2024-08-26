@@ -1,6 +1,7 @@
 #include "../Headers/vector3d.h"
 #include "../Headers/segment3d.h"
 #include "../Headers/worker.h"
+#include "../Headers/gauss.h"
 
 int main()
 {
@@ -9,5 +10,7 @@ int main()
     Segment3D a1a2(a1, a2), b1b2(b1, b2);
     Worker tester(&a1a2, &b1b2);
     tester.isIntersect();
+    Gauss GG(0, 4, -4, 5, 5-1, 3-2);
+
     return 0;
 }
