@@ -4,12 +4,13 @@
 #include <cstdio>
 #endif
 
-Worker::Worker(Segment3D Segm1, Segment3D Segm2)
+Worker::Worker(Segment3D* p_Segm1, Segment3D* p_Segm2)
 {
-    this->Segm1 = Segm1;
-    this->Segm2 = Segm2;
-    this->DirectVect1 = Segm1.getDirectVect();
-    this->DirectVect2 = Segm2.getDirectVect();
+    this->p_Segm1 = p_Segm1;
+    this->p_Segm2 = p_Segm2;
+    this->DirectVect1 = p_Segm1->getDirectVect();
+    this->DirectVect2 = p_Segm2->getDirectVect();
+
 }
 
 bool Worker::isNotParallel()
@@ -37,7 +38,7 @@ bool Worker::isNotParallel()
 
 bool Worker::isCoplanar()
 {
-    Segment3D start1start2Segm(Segm1.getStartVect(), Segm2.getStartVect());
+    Segment3D start1start2Segm(p_Segm1->getStartVect(), p_Segm2->getStartVect());
     Vector3D s1s2Vect = start1start2Segm.getDirectVect();
     if(ThirdOrderDet(s1s2Vect, DirectVect1, DirectVect2) == 0.0)
     {

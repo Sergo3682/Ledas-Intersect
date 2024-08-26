@@ -7,11 +7,11 @@
 class Worker
 {
 public:
-    Worker(Segment3D Segm1, Segment3D Segm2);
+    Worker(Segment3D* p_Segm1, Segment3D* p_Segm2);
     bool isIntersect();
 private:
-    Segment3D Segm1;
-    Segment3D Segm2;
+    Segment3D* p_Segm1;
+    Segment3D* p_Segm2;
     Vector3D DirectVect1;
     Vector3D DirectVect2;
     bool isNotParallel();
