@@ -1,5 +1,9 @@
 #include "../Headers/worker.h"
 
+#ifdef DEBUG
+#include <cstdio>
+#endif
+
 Worker::Worker(Segment3D Segm1, Segment3D Segm2)
 {
     this->Segm1 = Segm1;
@@ -16,9 +20,19 @@ bool Worker::isNotParallel()
     tmpZ = DirectVect1.getZ() / DirectVect2.getZ();
 
     if(tmpX != tmpY && tmpY != tmpZ && tmpX != tmpZ)
+    {
+        #ifdef DEBUG
+        printf("\t\tNot Parallel!!!\n");
+        #endif
         return true;
+    }
     else
+    {
+        #ifdef DEBUG
+        printf("\t\tParallel :(\n");
+        #endif
         return false;
+    }
 }
 
 bool Worker::isCoplanar()
@@ -26,9 +40,19 @@ bool Worker::isCoplanar()
     Segment3D start1start2Segm(Segm1.getStartVect(), Segm2.getStartVect());
     Vector3D s1s2Vect = start1start2Segm.getDirectVect();
     if(ThirdOrderDet(s1s2Vect, DirectVect1, DirectVect2) == 0.0)
+    {
+        #ifdef DEBUG
+        printf("\t\tCoplanar!!!\n");
+        #endif
         return true;
+    }
     else
+    {
+        #ifdef DEBUG
+        printf("\t\tNot Coplanar :(\n");
+        #endif
         return false;
+    }
 }
 
 double Worker::ThirdOrderDet(Vector3D s1s2Vect, Vector3D DirectVect1, Vector3D DirectVect2)
@@ -42,5 +66,9 @@ double Worker::ThirdOrderDet(Vector3D s1s2Vect, Vector3D DirectVect1, Vector3D D
 
 bool Worker::isIntersect()
 {
-    return isNotParallel() && isCoplanar();
+    bool ans = isNotParallel() && isCoplanar();
+    #ifdef DEBUG
+    printf("Is Intersect?\t\t%d\n", ans);
+    #endif
+    return ans;
 }
