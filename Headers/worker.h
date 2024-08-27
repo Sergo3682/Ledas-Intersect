@@ -2,6 +2,7 @@
 #define WORKER_H
 
 #include "../Headers/segment3d.h"
+#include "../Headers/matrix.h"
 #include "vector3d.h"
 
 class Worker
@@ -9,6 +10,7 @@ class Worker
 public:
     Worker(Segment3D* p_Segm1, Segment3D* p_Segm2);
     bool isIntersect();
+    Vector3D Intersect();
 private:
     Segment3D* p_Segm1;
     Segment3D* p_Segm2;

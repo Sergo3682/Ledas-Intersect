@@ -7,8 +7,8 @@ ifeq ($(DEBUG), 1)
 	CFLAGS += -DDEBUG
 endif
 
-output: main.o vector3d.o segment3d.o worker.o gauss.o
-	$(CC) main.o vector3d.o segment3d.o worker.o gauss.o $(CFLAGS) -o app
+output: main.o vector3d.o segment3d.o worker.o matrix.o
+	$(CC) main.o vector3d.o segment3d.o worker.o matrix.o $(CFLAGS) -o app
 
 main.o: Sources/main.cpp
 	$(CC) $(CFLAGS) -c Sources/main.cpp
@@ -22,8 +22,8 @@ segment3d.o: Sources/segment3d.cpp
 worker.o: Sources/worker.cpp
 	$(CC) $(CFLAGS) -c Sources/worker.cpp
 
-gauss.o: Sources/gauss.cpp
-	$(CC) $(CFLAGS) -c Sources/gauss.cpp
+matrix.o: Sources/matrix.cpp
+	$(CC) $(CFLAGS) -c Sources/matrix.cpp
 
 clean:
 	rm *.o app
