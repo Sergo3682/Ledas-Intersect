@@ -9,8 +9,12 @@ int main()
     Vector3D a1(1, 2, 4), a2(1, -2, 3), b1(5, 3, 1), b2(1, -2, 3);
     Segment3D a1a2(a1, a2), b1b2(b1, b2);
     Worker Tester(&a1a2, &b1b2);
-    Tester.isIntersect();
-    Matrix GG(0, 4, -4, 5, 5-1, 3-2);
+    if (Tester.isIntersect())
+    {
+        Tester.Intersect();
+    }
+
+    //Matrix GG(0, 4, -4, 5, 5-1, 3-2);
 
     return 0;
 }

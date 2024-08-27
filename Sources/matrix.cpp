@@ -1,4 +1,5 @@
 #include "../Headers/matrix.h"
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
@@ -28,6 +29,9 @@ double Matrix::gaussianElimination()
     rowMult();
     std::vector<double> ans = getAns();
     /*returns t parametr*/
+    #ifdef DEBUG
+    printf("swapped?\t%d | x[o] = %f, x[1] = %f\n", swapped, ans[0], ans[1]);
+    #endif
     return swapped ? ans[1] : ans[0];
 }
 
@@ -54,12 +58,13 @@ void Matrix::rowSwap()
                     break;
                 }
             }
-            #ifdef DEBUG
             if (!swapped)
             {
+                #ifdef DEBUG
                 printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cant solve\n");
+                #endif
+                throw std::runtime_error("Can't solve this matrix! A[i][i] == 0 btw :(");
             }
-            #endif
         }
     }
 }
@@ -97,6 +102,15 @@ void Matrix::rowMult()
     #ifdef DEBUG
     printMatr();
     #endif
+}
+
+void Matrix::setNewAttributes(double a1, double b1, double a2, double b2, double c1, double c2)
+{
+    A = {
+        {a1, b1},
+        {a2, b2}
+        };
+    B = {c1, c2};
 }
 
 #ifdef DEBUG

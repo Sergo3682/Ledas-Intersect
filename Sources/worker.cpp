@@ -1,4 +1,5 @@
 #include "../Headers/worker.h"
+#include <stdexcept>
 
 #ifdef DEBUG
 #include <cstdio>
@@ -73,9 +74,46 @@ bool Worker::isIntersect()
     #endif
     return ans;
 }
-/*
+
 Vector3D Worker::Intersect()
 {
-    //Matrix Mat();
+    double t =0.0;
+    Matrix Mat(DirectVect1.getX(), -DirectVect2.getX(),
+               DirectVect1.getY(), -DirectVect2.getY(),
+               p_Segm2->getStartVect().getX() - p_Segm1->getStartVect().getX(),
+               p_Segm2->getStartVect().getY() - p_Segm1->getStartVect().getY()
+               );
+    try {t = Mat.gaussianElimination();}
+    catch (const std::runtime_error &e)
+    {
+        Mat.setNewAttributes(DirectVect1.getY(), -DirectVect2.getY(),
+                             DirectVect1.getZ(), -DirectVect2.getZ(),
+                             p_Segm2->getStartVect().getY() - p_Segm1->getStartVect().getY(),
+                             p_Segm2->getStartVect().getZ() - p_Segm1->getStartVect().getZ()
+                            );
+        try {t = Mat.gaussianElimination();}
+        catch (std::runtime_error &e)
+        {
+            Mat.setNewAttributes(DirectVect1.getX(), -DirectVect2.getX(),
+                                 DirectVect1.getZ(), -DirectVect2.getZ(),
+                                 p_Segm2->getStartVect().getX() - p_Segm1->getStartVect().getX(),
+                                 p_Segm2->getStartVect().getZ() - p_Segm1->getStartVect().getZ()
+                                );
+            try {t = Mat.gaussianElimination();}
+            catch (std::runtime_error &e)
+            {
+                std::exit(EXIT_FAILURE);
+            }
+        }
+    }
+    
+    double x = DirectVect1.getX() * t + p_Segm1->getStartVect().getX();
+    double y = DirectVect1.getY() * t + p_Segm1->getStartVect().getY();
+    double z = DirectVect1.getZ() * t + p_Segm1->getStartVect().getZ();
+
+    #ifdef DEBUG
+    printf("\t\tVector3D (%.3f, %.3f, %.3f)\n", x, y, z);
+    #endif
+
+    return Vector3D(x, y, z);
 }
-*/

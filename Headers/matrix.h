@@ -8,6 +8,7 @@ class Matrix
 public:
     Matrix(double a1, double b1, double a2, double b2, double c1, double c2);
     double gaussianElimination();
+    void setNewAttributes(double a1, double b1, double a2, double b2, double c1, double c2);
 private:
     void rowSwap();
     void rowMult();
