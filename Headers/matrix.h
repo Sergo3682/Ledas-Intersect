@@ -13,7 +13,6 @@ private:
     void rowSwap();
     void rowMult();
     std::vector<double> getAns();
-    bool swapped;
     #ifdef DEBUG
     void printMatr();
     #endif

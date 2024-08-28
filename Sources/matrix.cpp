@@ -1,7 +1,6 @@
 #include "../Headers/matrix.h"
 #include <stdexcept>
 #include <utility>
-#include <vector>
 
 #ifdef DEBUG
 #include <cstdio>
@@ -9,8 +8,6 @@
 
 Matrix::Matrix(double a1, double b1, double a2, double b2, double c1, double c2)
 {
-    swapped = false;
-
     A = {
         {a1, b1},
         {a2, b2}
@@ -30,42 +27,28 @@ double Matrix::gaussianElimination()
     std::vector<double> ans = getAns();
     /*returns t parametr*/
     #ifdef DEBUG
-    printf("swapped?\t%d | x[o] = %f, x[1] = %f\n", swapped, ans[0], ans[1]);
+    printf("t = %f, s = %f\n", ans[0], ans[1]);
     #endif
-    return swapped ? ans[1] : ans[0];
+    return ans[0];
 }
 
 void Matrix::rowSwap()
 {
-    int n = B.size();
-
-    for (int i = 0; i < n; i++)
+    if ( ((A[0][0] == 0) || (A[1][1] == 0)) && ((A[0][1] != 0) && (A[1][0] != 0)) )
     {
-        if (A[i][i] == 0)
-        {
-            swapped = false;
-            for (int j = i + 1; j < n; j++)
-            {
-                if (A[j][i] != 0)
-                {
-                    std::swap(A[i], A[j]);
-                    std::swap(B[i], B[j]);
-                    swapped = true;
-                    #ifdef DEBUG
-                    printMatr();
-                    printf("swaped\n");
-                    #endif
-                    break;
-                }
-            }
-            if (!swapped)
-            {
-                #ifdef DEBUG
-                printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!cant solve\n");
-                #endif
-                throw std::runtime_error("Can't solve this matrix! A[i][i] == 0 btw :(");
-            }
-        }
+        std::swap(A[0], A[1]);
+        std::swap(B[0], B[1]);
+        #ifdef DEBUG
+        printMatr();
+        printf("swapped\n");
+        #endif
+    }
+    else if ( ((A[0][0] == 0) || (A[1][1] == 0)) && ((A[0][1] == 0) || (A[1][0] == 0)) )
+    {
+        #ifdef DEBUG
+        printf("Can't solve this matrix! A[i][i] == 0 btw :(\n");
+        #endif
+        throw std::runtime_error("Can't solve this matrix! A[i][i] == 0 btw :(");
     }
 }
 
@@ -111,6 +94,9 @@ void Matrix::setNewAttributes(double a1, double b1, double a2, double b2, double
         {a2, b2}
         };
     B = {c1, c2};
+    #ifdef DEBUG
+    printMatr();
+    #endif
 }
 
 #ifdef DEBUG

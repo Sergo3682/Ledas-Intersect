@@ -35,3 +35,9 @@ void Vector3D::setCoords(double X, double Y, double Z)
     this->Y = Y;
     this->Z = Z;
 }
+
+std::string Vector3D::toString()
+{
+    std::string str = "Vector3D(" + std::to_string(X) + ", " + std::to_string(Y) + ", " + std::to_string(Z) +")";
+    return str;
+}
