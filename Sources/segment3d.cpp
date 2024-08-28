@@ -41,3 +41,10 @@ Vector3D Segment3D::getStartVect()
 {
     return start;
 }
+
+void Segment3D::setNewAttributes(Vector3D* start, Vector3D* end)
+{
+    this->start = *start;
+    this->end = *end;
+    setDirectVect();
+}

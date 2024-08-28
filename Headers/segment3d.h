@@ -10,6 +10,7 @@ public:
     Segment3D(Vector3D start, Vector3D end);
     Vector3D getDirectVect();
     Vector3D getStartVect();
+    void setNewAttributes(Vector3D* start, Vector3D* end);
 private:
     Vector3D start;
     Vector3D end;
